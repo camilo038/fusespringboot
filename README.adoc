@@ -1,31 +1,8 @@
 == Spring-Boot Camel QuickStart using ConfigMaps and Secrets
 
-$ cd my_openshift/spring-boot-camel-config
-----
-
-. Create the (**required**) secret:
-+
-----
-$ oc create -f sample-secret.yml
-----
-
-. Create the ConfigMap (the ConfigMap can be also created after the application has been deployed, to see the live-reload feature in action):
-+
-----
-$ oc create -f sample-configmap.yml
-----
-
-. Build and deploy the project to the OpenShift cluster:
-+
-[source,bash,options="nowrap",subs="attributes+"]
 ----
 $ mvn clean -DskipTests fabric8:deploy -Popenshift
 ----
-
-. In your browser, navigate to the `MY_PROJECT_NAME` project in the OpenShift console.
-Wait until you can see that the pod for the `spring-boot-camel-config` has started up.
-
-. On the project's `Overview` page, navigate to the details page deployment of the `spring-boot-config` application: `https://OPENSHIFT_IP_ADDR:8443/console/project/MY_PROJECT_NAME/browse/rc/spring-boot-camel-config-NUMBER_OF_DEPLOYMENT?tab=details`.
 
 ----
 mvn test -Dtest=*KT
