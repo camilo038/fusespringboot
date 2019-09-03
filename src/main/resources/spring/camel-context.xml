@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
-    
-
-
- <bean class="org.slf4j.LoggerFactory" factory-method="getLogger" id="rh1">
+    <bean class="org.slf4j.LoggerFactory" factory-method="getLogger" id="rh1">
         <constructor-arg index="0" value="rh1"/>
     </bean>
-    
     <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
         <!-- Main route -->
         <route id="generate-order-route">
             <from id="route-timer" uri="timer:order?period=3000"/>
-          <setBody><simple>Hola entelgy</simple></setBody>
-          <log loggerRef="rh1" loggingLevel="ERROR" message="::::::::${body}"></log>
+            <setBody id="_setBody1">
+                <simple>Hola entelgy</simple>
+            </setBody>
+            <log id="_log1" loggerRef="rh1" loggingLevel="ERROR" message="Log slf4j::::::::${body}"/>
         </route>
     </camelContext>
 </beans>
